@@ -1,9 +1,68 @@
 
+<div class="ui container">
+    <s-div :div="content"></s-div>
+    <div class="ui button">哈哈</div>
+</div>
 
-<div class="ui button">哈喽</div>
 
 <script>
+
+
+
+    Vue.component("s-div",{
+        name:'s-div',
+        props:['div'],
+        template: '<div v-if="div.text" @click="click" :style="style" :class="clazz">{{div.text}}</div>' ,
+        data:function(){
+            var vm = this;
+          if(this.div.events){
+              $.each(this.div.events,function(k,v){
+                  vm[k] = v.bind(vm);
+              })
+          }
+           return {
+               clazz:this.div.clazz,
+               style:this.div.style,
+           }
+
+        },
+        methods:{
+            click:function(){}
+        },
+        mounted:function(){
+            $(".ui.button").velocity({
+                translateX: "200px",
+                rotateZ: "90deg",
+                opacity:0.5
+            });
+        }
+    });
+
+
     $.post('http:\\\\localhost:8000',{},function(data){
         console.log(data);
+    });
+
+    new Vue({
+        el:'.ui.container',
+        data:{
+            content:{
+                text:'哈哈',
+                style:{
+                    height:'100px',
+                    width:'100px',
+                    background:'yellow'
+                },
+                clazz:{
+                    ui:true,
+                    container:true
+                },
+                events:{
+                    click:function(){
+                        console.log(this);
+                    }
+                }
+            }
+        }
     });
 </script>
