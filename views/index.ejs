@@ -1,7 +1,6 @@
 
 <div class="ui container">
     <s-div :div="content"></s-div>
-    <div class="ui button">哈哈</div>
 </div>
 
 
@@ -30,11 +29,18 @@
             click:function(){}
         },
         mounted:function(){
-            $(".ui.button").velocity({
-                translateX: "200px",
-                rotateZ: "90deg",
-                opacity:0.5
-            });
+
+            this.$nextTick(function(){
+                var vm = this;
+                setTimeout(function(){
+                    $(vm.$el).velocity({
+                        translateX: "200px",
+                        rotateZ: "45deg",
+                    });
+                },70)
+
+            })
+
         }
     });
 
