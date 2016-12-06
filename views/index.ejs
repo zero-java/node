@@ -1,6 +1,19 @@
 
 <div class="ui container">
-    <s-div :div="content"></s-div>
+    <s-div :div="content" v-for="n in 3"></s-div>
+    <s-div :div="{
+    clazz:{
+    ui:true,button:true,teal:true
+    },
+    text:'茶色',
+    events:{
+    click:function(){
+    this.clazz.teal=false;
+    this.clazz.green=true;
+    this.div.text='绿色';
+    }
+    }
+    }"></s-div>
 </div>
 
 
@@ -21,25 +34,26 @@
           }
            return {
                clazz:this.div.clazz,
-               style:this.div.style,
+               style: $.extend(this.div.style,{}),
            }
 
         },
         methods:{
-            click:function(){}
+            click:function(){
+
+            }
         },
         mounted:function(){
+            if(this.div.mounted){
+                this.$nextTick(function(){
+                    var vm = this;
+                    setTimeout(function(){
+                        vm.div.mounted(vm);
+                    },70)
 
-            this.$nextTick(function(){
-                var vm = this;
-                setTimeout(function(){
-                    $(vm.$el).velocity({
-                        translateX: "200px",
-                        rotateZ: "45deg",
-                    });
-                },70)
+                })
+            }
 
-            })
 
         }
     });
@@ -55,18 +69,35 @@
             content:{
                 text:'哈哈',
                 style:{
-                    height:'100px',
-                    width:'100px',
-                    background:'yellow'
+                    height:'50px',
+                    width:'200px',
+                    marginLeft:"200px",
+                    background:'grey',
+                    display:"none",
+                    opacity:0
                 },
                 clazz:{
-                    ui:true,
-                    container:true
+                    ui:false,
+                    container:false
                 },
                 events:{
                     click:function(){
+
                         console.log(this);
                     }
+                },
+                mounted:function(vm){
+                    vm.style.display="block"
+                    $(vm.$el).velocity({
+                        p:{
+                            opacity:1,
+                            marginLeft:0,
+                            rotateX:1080,
+                        },
+                        o:{
+                            duration:3000
+                        }
+                    })
                 }
             }
         }
