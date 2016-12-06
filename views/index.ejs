@@ -11,7 +11,7 @@
     Vue.component("s-div",{
         name:'s-div',
         props:['div'],
-        template: '<div v-if="div.text" @click="click" :style="style" :class="clazz">{{div.text}}</div>' ,
+        template: '<div id="test" v-if="div.text" @click="click" :style="style" :class="clazz">{{div.text}}</div>' ,
         data:function(){
             var vm = this;
           if(this.div.events){
@@ -35,9 +35,9 @@
                 setTimeout(function(){
                     $(vm.$el).velocity({
                         translateX: "200px",
-                        rotateZ: "45deg",
+                rotateZ: "45deg",
                     });
-                },70)
+                },100)
 
             })
 
