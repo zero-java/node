@@ -1,6 +1,6 @@
 {
   "name": "node",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -13,5 +13,21 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "description": "node",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zero-java/node.git"
+  },
+  "keywords": [
+    "443683059"
+  ],
+  "author": "scv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zero-java/node/issues"
+  },
+  "homepage": "https://github.com/zero-java/node#readme"
 }
