@@ -8,10 +8,46 @@
   <script src="/javascripts/mvvm/vue.js"></script>
   <script src="/javascripts/semantic/semantic.min.js"></script>
   <script src="/javascripts/then/then.js"></script>
+    <script src="/javascripts/Utils.js"></script>
+
   <script src="/javascripts/annimate/velocity.min.js"></script>
+  <script src="/javascripts/mvvm/semantic/base/Element.js"></script>
+  <script src="/javascripts/mvvm/semantic/Button.js"></script>
   <title>哈哈</title>
 </head>
 <body>
-  <% include index.ejs%>
+<div class="ui container">
+  <i-icon :clazz="icon" @click="click" :index="index" v-for="(icon, index) in icons" ></i-icon>
+  <div-button :clazz="clazz" >
+    <i-icon clazz="user" @click="click"></i-icon>
+    {{text}}
+  </div-button>
+</div>
 </body>
+<script>
+
+  var vm=new Vue({
+    el:'.container',
+    data:{
+      clazz:'red',
+      icon:'user',
+      text:'哈哈',
+      icons:["user","user","user","user","user","user","user",]
+    },
+    events:{
+      click:function(){
+        console.log(this);
+      }
+    },
+    methods:{
+        click:function(index){
+        if(index>=0) this.icons.splice(index,1,"red user");
+      },
+
+    }
+  });
+
+
+
+</script>
 </html>

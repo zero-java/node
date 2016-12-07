@@ -4,17 +4,9 @@
  */
 
 
-Vue.component("s-button",{
-    props:['class','style'],
-    template:'<div class="ui button" :class="[buttonClass]" tabindex="0" style="buttonStyle"></div>',
-    data:function(){
-
-        return {
-            buttonStyle:$.extend(true,{},this.style,{
-
-            }),
-            buttonClass:this.class
-        }
-    }
+Vue.component("div-button",{
+    props:$.extend(true,{},settings.props),
+    template:'<div class="ui button" @click="click" :class="[clazz]" tabindex="0" :style="style"><slot v-if="$slots.default"></slot></div>',
+    methods:$.extend(true,{},settings.methods)
 });
 

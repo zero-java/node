@@ -2,19 +2,22 @@
  * create vue element
  * Created by Administrator on 2016/12/5.
  */
-
-
-Vue.component("s-div",{
-    props:['class','style','events','child','tag'],
-    template:'<div class="ui container" :class="[buttonClass]" tabindex="0" style="buttonStyle"></div>',
-    data:function(){
-
-        return {
-            buttonStyle:$.extend(true,{},this.style,{
-
-            }),
-            buttonClass:this.class,
-
+var settings={
+    props:{
+        clazz:String,
+        style:Object,
+        index:Number
+    },
+    methods:{
+        click:function(){
+            this.$emit("click",this.index);
         }
-    }
-});
+    },
+
+}
+
+Vue.component("i-icon",{
+    props:$.extend(true,{},settings.props),
+    template:'<i class="icon" @click="click" :class="[clazz]" :style="style"></i>',
+    methods:$.extend(true,{},settings.methods)
+})

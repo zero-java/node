@@ -1,5 +1,10 @@
-$primaryColor:red;
 
+
+@import "components/Color";
 #test {
-    color:$primaryColor
+    color:$red;
+
+  li {
+       background: $blue;
+    }
 }
