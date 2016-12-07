@@ -10,14 +10,17 @@ var settings={
     },
     methods:{
         click:function(){
-            this.$emit("click",this.index);
+            this.$emit("click",this.index,this.$options._componentTag);
         }
     },
 
 }
 
 Vue.component("i-icon",{
+    name:'i-icon',
     props:$.extend(true,{},settings.props),
     template:'<i class="icon" @click="click" :class="[clazz]" :style="style"></i>',
     methods:$.extend(true,{},settings.methods)
 })
+
+
