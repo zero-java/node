@@ -3,3 +3,6 @@
 
 build/
 public/javascripts/sevue/sevu*
+node_modules/
+.idea
+*.iml
