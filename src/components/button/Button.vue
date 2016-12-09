@@ -16,9 +16,7 @@
             },
 
             methods:{
-                onClick:function(event){
-                    this.$emit("click",event);
-                }
+                onClick(event){this.$emit("click",event)}
             }
 
     }

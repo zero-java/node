@@ -7,7 +7,7 @@ const webpack = require('webpack');
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, './public/javascripts/sevue'),
+        path: path.resolve(__dirname, './../public/javascripts/sevue'),
         filename: 'sevue.js'
     },
         module: {
@@ -45,9 +45,6 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue'],
     },
-    plugins: [
-
-    ],
-    devtool: '#cheap-source-map'
+    devtool: '#source-map'
 };
 
