@@ -8,39 +8,19 @@
   <script src="/javascripts/mvvm/vue.js"></script>
   <script src="/javascripts/semantic/semantic.min.js"></script>
   <script src="/javascripts/then/then.js"></script>
-  <script src="/javascripts/Utils.js"></script>
-
-  <script src="/javascripts/annimate/velocity.min.js"></script>
-  <script src="/javascripts/mvvm/semantic/base/Element.js"></script>
-  <script src="/javascripts/mvvm/semantic/Button.js"></script>
-    <script src="/javascripts/mvvm/semantic/Label.js"></script>
-
+  <script src="/javascripts/sevue/sevue.js"></script>
   <title>哈哈</title>
 </head>
 <body>
-<div class="ui container">
-  <i-icon :clazz="icon" @click="click" :index="index" v-for="(icon, index) in icons" ></i-icon>
-  <div-button :clazz="clazz" @click="click" >
-    <i-icon clazz="user" @click="click"></i-icon>
-    {{text}}
-  </div-button>
-
-    <div-buttons>
-        <div-button :clazz="button.clazz" v-for="n in 10">
-            <div class="visible content" v-html="button.content.visible"></div>
-            <div class="hidden content" v-html="button.content.hidden"></div>
-        </div-button>
-    </div-buttons>
-
-
-</div>
+<div id="app"></div>
 </body >
 <script>
 
   var vm=new Vue({
-    el:'.container',
+    el:'#app',
+     template:'<SeButton :classes="clazz" @click="click">哈哈</SeButton>',
     data:{
-      clazz:'red',
+      clazz:{red:true},
       icon:'user',
       text:'哈哈',
       icons:["user","user","user","user","user","user","user",],
@@ -50,11 +30,6 @@
              visible:'<i class="user icon"></i>哈哈',
              hidden:'<i class="mail icon"></i>嘿嘿',
          }
-      }
-    },
-    events:{
-      click:function(){
-        console.log(this);
       }
     },
     methods:{
