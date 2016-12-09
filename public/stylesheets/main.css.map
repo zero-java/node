@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,KAAM,CACF,KAAK,CCHJ,GAAG,CDKN,QAAG,CACE,UAAU,CCPX,IAAI",
+"sources": ["main.scss","components/Color.scss"],
+"names": [],
+"file": "main.css"
+}
