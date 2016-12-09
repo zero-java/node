@@ -45,7 +45,9 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue'],
     },
+    plugins: [
 
-    devtool: '#source-map'
+    ],
+    devtool: '#cheap-source-map'
 };
 
