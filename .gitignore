@@ -3,6 +3,6 @@
 
 
 public/javascripts/sevue/sevu*
-#node_modules/
+node_modules/
 .idea
 *.iml
