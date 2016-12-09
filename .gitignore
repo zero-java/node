@@ -1,7 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 
 
-build/
+
 public/javascripts/sevue/sevu*
 node_modules/
 .idea
