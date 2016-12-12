@@ -18,19 +18,40 @@
 
   var vm=new Vue({
     el:'#app',
-     template:'<SeButton :classes="clazz" @click="click">哈哈</SeButton>',
+     template:'<se-container><se-buttons v-if="buttons">' +
+     '<se-button v-for="button in buttons" :classes="button.classes" @click="click">' +
+     '<template v-if="button.classes.animated">' +
+     '<div class="visible content" ><se-icon :classes="button.content.visible.icon"></se-icon>{{button.content.visible.text}}</div><div class="hidden content"><se-icon :classes="button.content.hidden.icon"></se-icon>{{button.content.hidden.text}}</div>' +
+     '</template>' +
+     '<template v-else>{{button.content}}</template>' +
+     '</se-button>' +
+     '</se-buttons>' +
+     '<se-divider class="horizontal"><i class="user icon"></i>test</se-divider>' +
+     '<se-header>哈哈</se-header>' +
+     '</se-container>',
     data:{
       clazz:{red:true},
       icon:'user',
       text:'哈哈',
       icons:["user","user","user","user","user","user","user",],
-      button:{
-          clazz:'fade animated',
+      buttons:[
+          {
+          classes:{
+              fade:true,
+              animated:true,
+          },
           content:{
-             visible:'<i class="user icon"></i>哈哈',
-             hidden:'<i class="mail icon"></i>嘿嘿',
-         }
-      }
+              visible:{icon:{user:true},text:'哈哈'},
+              hidden:{icon:{mail:true},text:'嘿嘿'},
+          }
+          },
+          {
+              classes:{
+                  teal:true
+              },
+              content:'啦啦'
+          }
+      ],
     },
     methods:{
         click:function(index,name){
