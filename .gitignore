@@ -4,5 +4,5 @@
 
 public/javascripts/sevue/sevu*
 node_modules/
-#.idea
+.idea
 *.iml
