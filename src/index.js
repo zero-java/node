@@ -10,6 +10,8 @@ import divider from "./components/divider/index"
 import header from "./components/header/index"
 import icon from "./components/icon/index"
 import image from "./components/image/index"
+import input from "./components/input/index"
+
 const components = [
     button,
     button.group,
@@ -17,7 +19,8 @@ const components = [
     divider,
     header,
     icon,
-    image
+    image,
+    input
 ];
 
 components.forEach(component=>Vue.component(component.name,component));

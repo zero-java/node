@@ -1,5 +1,5 @@
 <template>
-    <div class="ui input" :class="classes" :style="styles">
+    <div class="ui label" :class="classes" :style="styles">
         <slot></slot>
     </div>
 </template>

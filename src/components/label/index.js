@@ -2,6 +2,6 @@
  * Created by Administrator on 2016/12/12.
  */
 
-import input from "./input.vue"
+import image from "./label.vue"
 
-export default input;
+export default image;
