@@ -3,9 +3,10 @@
 </template>
 <script>
     export default{
-        name:'SeIcon',
+        name:'SeImage',
         props:{
             classes:Object,
+            styles:Object
         },
         data(){
             return{

@@ -9,13 +9,15 @@ import container from "./components/container/index"
 import divider from "./components/divider/index"
 import header from "./components/header/index"
 import icon from "./components/icon/index"
+import image from "./components/image/index"
 const components = [
     button,
     button.group,
     container,
     divider,
     header,
-    icon
+    icon,
+    image
 ];
 
 components.forEach(component=>Vue.component(component.name,component));
