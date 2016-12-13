@@ -4,23 +4,37 @@
  */
 
 
-import button from "./components/button/index"
+import buttons from "./components/button/index"
 import container from "./components/container/index"
 import divider from "./components/divider/index"
 import header from "./components/header/index"
 import icon from "./components/icon/index"
 import image from "./components/image/index"
 import input from "./components/input/index"
-
+import label from "./components/label/index"
+import steps from "./components/steps/index"
+import segments from "./components/segment/index"
+import reveal from "./components/reveal/index"
+import loader from "./components/loader/index"
+import list from "./components/list/index"
 const components = [
-    button,
-    button.group,
+    buttons,
+    buttons.Button,
     container,
     divider,
     header,
     icon,
     image,
-    input
+    input,
+    label,
+    steps,
+    steps.Step,
+    segments,
+    segments.Segment,
+    segments.Segment.Rail,
+    reveal,
+    loader,
+    list
 ];
 
 components.forEach(component=>Vue.component(component.name,component));

@@ -13,6 +13,7 @@
 </head>
 <body>
 <div id="app"></div>
+
 </body >
 <script>
 
@@ -28,6 +29,13 @@
      '</se-buttons>' +
      '<se-divider class="horizontal"><i class="user icon"></i>test</se-divider>' +
      '<se-header>哈哈</se-header>' +
+     '<se-reveal :classes="{move:true}">' +
+     '<se-button :classes="{red:true}" slot="visible">visible</se-button>' +
+     '<se-button :classes="{teal:true}" slot="hidden">visible</se-button>' +
+     '</se-reveal>' +
+     '<se-steps><se-step>1</se-step></se-steps>' +
+     '<se-loader :classes="{text:true,active:true}" :text="\'哈哈\'"></se-loader>' +
+     '<se-list :items="list"></se-list>' +
      '</se-container>',
     data:{
       clazz:{red:true},
@@ -52,6 +60,12 @@
               content:'啦啦'
           }
       ],
+
+        list:[
+            {icon:{user:true},content:{header:'12',description:'121'}},
+            {icon:{user:true},content:{description:'343'}},
+            {icon:{user:true},content:{header:'34'}}
+        ]
     },
     methods:{
         click:function(index,name){

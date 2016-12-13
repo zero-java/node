@@ -5,8 +5,8 @@
 
 import button from "./button.vue"
 import buttons from "./button-group.vue"
-button.group = buttons;
-export default button;
+buttons.Button = button;
+export default buttons;
 
 
 
