@@ -1,6 +1,6 @@
 <template>
             <div class="ui list" :class="classes" :style="styles" v-if="items">
-                <item v-for="item in items" :icon="item.icon" :content="item.content"></item>
+                <item v-for="item in items" :icon="item.icon" :content="item.content" :list="item.list"></item>
             </div>
 </template>
 <script>

@@ -62,9 +62,31 @@
       ],
 
         list:[
-            {icon:{user:true},content:{header:'12',description:'121'}},
-            {icon:{user:true},content:{description:'343'}},
-            {icon:{user:true},content:{header:'34'}}
+            {icon:{folder:true},content:{description:'root1'},
+                list:{
+                items:[
+                {icon:{mail:true},content:{description:'root1-1'},
+                    list:{
+                        items:[
+                            {icon:{file :true},content:{description:'root1-1-1'},
+                                list:{
+                                    items:[
+                                        {icon:{idea:true},content:{description:'root1-1-1-1'}
+
+                                        },
+                                        {icon:{idea:true},content:'root1-1-2'}
+                                    ]
+                                }
+                            },
+                            {icon:{file :true},content:'哈哈'}
+                        ]
+                    }
+                },
+                {icon:{mail:true},content:'root1-2'}
+                    ]
+                    }},
+            {icon:{folder :true},content:{description:'root2'}},
+            {icon:{folder :true},content:'root3'}
         ]
     },
     methods:{

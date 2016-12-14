@@ -1,10 +1,14 @@
 <template>
     <div class="item" :class="classes" :style="styles">
         <_icon :classes="icon" v-if="icon"></_icon>
-        <_content v-if="content">
-            <_header slot="header" v-if="content.header">{{content.header}}</_header>
-            <div class="description" v-if="content.description" slot="description">{{content.description}}</div>
-        </_content>
+        <template v-if="contentString">{{content}}</template>
+        <template v-else>
+            <_content v-if="content">
+                <_header slot="header" v-if="content.header">{{content.header}}</_header>
+                <div class="description" v-if="content.description" slot="description">{{content.description}}</div>
+                <se-list slot="list" v-if="list" :items="list.items"></se-list>
+            </_content>
+        </template>
     </div>
 </template>
 
@@ -12,13 +16,15 @@
     import icon from "./../icon/index"
     import content from "./../content/index"
     import header from "./../header/index"
+
     export default{
         name:'SeItem',
         props:{
             classes: Object,
             styles:Object,
             icon:Object,
-            content:Object
+            content:[Object,String],
+            list:Object
         },
         data(){
             return{
@@ -29,6 +35,12 @@
             _icon:icon,
             _content:content,
             _header:header,
+        },
+
+        computed:{
+            contentString:function(){
+                return !$.isPlainObject(this.content);
+            }
         }
     }
 </script>
