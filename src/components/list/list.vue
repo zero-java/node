@@ -1,6 +1,6 @@
 <template>
-            <div class="ui list" :class="classes" :style="styles" v-if="items">
-                <item v-for="item in items" :icon="item.icon" :content="item.content" :list="item.list"></item>
+            <div class="ui list" :class="classes" :style="styles" v-if="list&&list.items">
+                <item v-for="item in list.items" :classes="item.classes" :styles="item.styles" :icon="item.icon" :content="item.content" :list="item.list"></item>
             </div>
 </template>
 <script>
@@ -11,7 +11,7 @@
         props:{
             classes:Object,
             styles:Object,
-            items:Array
+            list:Object
         },
         data(){
             return{

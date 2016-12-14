@@ -6,7 +6,7 @@
             <_content v-if="content">
                 <_header slot="header" v-if="content.header">{{content.header}}</_header>
                 <div class="description" v-if="content.description" slot="description">{{content.description}}</div>
-                <se-list slot="list" v-if="list" :items="list.items"></se-list>
+                <se-list slot="list" v-if="list" :list="list" :classes="list.classes" :styles="list.styles"></se-list>
             </_content>
         </template>
     </div>

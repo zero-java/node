@@ -35,7 +35,7 @@
      '</se-reveal>' +
      '<se-steps><se-step>1</se-step></se-steps>' +
      '<se-loader :classes="{text:true,active:true}" :text="\'哈哈\'"></se-loader>' +
-     '<se-list :items="list"></se-list>' +
+     '<se-list :list="list" :classes="list.classes"></se-list>' +
      '</se-container>',
     data:{
       clazz:{red:true},
@@ -61,7 +61,8 @@
           }
       ],
 
-        list:[
+        list:{
+          items:[
             {icon:{folder:true},content:{description:'root1'},
                 list:{
                 items:[
@@ -70,10 +71,10 @@
                         items:[
                             {icon:{file :true},content:{description:'root1-1-1'},
                                 list:{
+                                    classes:{horizontal :true},
                                     items:[
-                                        {icon:{idea:true},content:{description:'root1-1-1-1'}
+                                        {icon:{idea:true},content:'root1-1-1-1'},
 
-                                        },
                                         {icon:{idea:true},content:'root1-1-2'}
                                     ]
                                 }
@@ -88,6 +89,7 @@
             {icon:{folder :true},content:{description:'root2'}},
             {icon:{folder :true},content:'root3'}
         ]
+      }
     },
     methods:{
         click(index,name){
