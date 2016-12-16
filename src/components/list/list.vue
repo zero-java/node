@@ -5,7 +5,7 @@
 </template>
 <script>
     import item from "./../item/index"
-    import icon from "./../icon/index"
+
     export default{
         name:'SeList',
         props:{

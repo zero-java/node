@@ -17,6 +17,7 @@ import segments from "./components/segment/index"
 import reveal from "./components/reveal/index"
 import loader from "./components/loader/index"
 import list from "./components/list/index"
+import element from "./components/element/index"
 const components = [
     buttons,
     buttons.Button,
@@ -34,7 +35,8 @@ const components = [
     segments.Segment.Rail,
     reveal,
     loader,
-    list
+    list,
+    element
 ];
 
 components.forEach(component=>Vue.component(component.name,component));

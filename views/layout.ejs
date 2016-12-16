@@ -16,6 +16,7 @@
 
 </body >
 <script>
+    "use strict"
 
   var vm=new Vue({
     el:'#app',
@@ -36,9 +37,11 @@
      '<se-steps><se-step>1</se-step></se-steps>' +
      '<se-loader :classes="{text:true,active:true}" :text="\'哈哈\'"></se-loader>' +
      '<se-list :list="list" :classes="list.classes"></se-list>' +
+     '<s-el :tag="tag"></s-el>' +
      '</se-container>',
     data:{
       clazz:{red:true},
+      tag:'a',
       icon:'user',
       text:'哈哈',
       icons:["user","user","user","user","user","user","user",],
@@ -100,6 +103,101 @@
     }
   });
 
+  var testObj={
+      test1:{t:1},
+      test2:2,
+      test3:3
+  }
+
+
+class Observer{
+      constructor(value){
+          this.value = value;
+          this.walk();
+      }
+
+      walk(){
+         Object.keys(this.value).forEach((k)=>this.observerValue(k,this.value[k]))
+      }
+
+      observerValue(key,value){
+          let dep = new Dep();
+          let val = $.isPlainObject(value)?new Observer(value):value;
+          Object.defineProperty(this.value,key,{
+              enumerable:true,
+              configurable:true,
+              get:()=>{
+                  if(Dep.target){
+                      dep.addWatcher(Dep.target);
+                  }
+                 return val.value?val.value:val
+              },
+              set:newVal=>{
+                  val= $.isPlainObject(newVal)?new Observer(newVal):newVal
+                  dep.notify();
+              }
+          })
+      }
+}
+
+ class Dep{
+      constructor(){
+          this.watchers = [];
+      }
+
+      addWatcher(watcher){
+          this.watchers.push(watcher);
+      }
+
+     notify(){
+          this.watchers.forEach(watcher=>watcher.update())
+      }
+ }
+
+ class Watcher{
+      constructor(obj,express,cb){
+          this.data = obj;
+          this.expression = express;
+          this.cb = cb;
+          this.value = this.get();
+      }
+
+      update(){
+          const value = this.get();
+          if(value!=this.value){
+              this.value = value;
+              this.cb();
+          }
+      }
+
+     get(){
+          return  this.getValue(this.data,this.expression);
+     }
+
+     getValue(obj,express){
+         let point = express.indexOf(".",0);
+         if(point!=-1){
+             let key =  express.substring(0,point);
+             let value = obj[key];
+            return this.getValue(value,express.substring(point+1,express.length))
+         }else{
+             Dep.target = this;
+             let val = obj[express]
+             Dep.target = null;
+             return val;
+         }
+
+     }
+
+ }
+  new Observer(testObj);
+  new Watcher(testObj,"test1.t",function(){
+      console.log("test1");
+  })
+  testObj.test1.t=3;
+    testObj.test2=5;
+  console.log(testObj.test1.t);
+    console.log(testObj.test2);
 
 
 </script>
