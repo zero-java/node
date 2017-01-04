@@ -9,6 +9,8 @@
   <script src="/javascripts/semantic/semantic.min.js"></script>
   <script src="/javascripts/then/then.js"></script>
   <script src="/javascripts/sevue/sevue.js"></script>
+  <script src="/javascripts/Test.js"></script>
+
   <title>哈哈</title>
 </head>
 <body>
@@ -38,8 +40,12 @@
      '<se-loader :classes="{text:true,active:true}" :text="\'哈哈\'"></se-loader>' +
      '<se-list :list="list" :classes="list.classes"></se-list>' +
      '<s-el :tag="tag"></s-el>' +
+     '<se-divider class="horizontal"><i class="clock icon"></i>spring boot 测试案例</se-divider>' +
+     '<se-button :classes="{primary:true}" @click="testRequestParam">测试@RequestParam</se-button>' +
+     '<se-button :classes="{primary:true}" @click="testMatrixVariable">测试@MatrixVariable</se-button>' +
      '</se-container>',
     data:{
+        test:test,
       clazz:{red:true},
       tag:'a',
       icon:'user',
@@ -99,6 +105,13 @@
         console.log(name)
         if(index>=0) this.icons.splice(index,1,"red user");
       },
+
+        testRequestParam:function(){
+            this.test.testRequestParam();
+        },
+        testMatrixVariable:function(){
+            this.test.testMatrixVariable();
+        }
 
     }
   });
@@ -201,4 +214,5 @@ class Observer{
 
 
 </script>
+
 </html>
