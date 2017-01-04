@@ -42,10 +42,10 @@
      }
 
     /**
-     * 矩阵参数  var;var=value;...
+     * 矩阵参数  var;var=value;... same to array and different to map
      */
      testMatrixVariable(){
-         this.sendGet("user/path/23;date="+new Date(),{})
+         this.sendGet("user/path/23;count=3;date="+new Date()+";date="+new Date()+";date="+new Date(),{})
      }
 
 }
