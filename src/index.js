@@ -18,6 +18,7 @@ import reveal from "./components/reveal/index"
 import loader from "./components/loader/index"
 import list from "./components/list/index"
 import element from "./components/element/index"
+import test from "./components/test/index"
 const components = [
     buttons,
     buttons.Button,
@@ -36,7 +37,10 @@ const components = [
     reveal,
     loader,
     list,
-    element
+    element,
 ];
+
+//test case
+test.forEach(e=>components.push(e));
 
 components.forEach(component=>Vue.component(component.name,component));
