@@ -18,6 +18,8 @@ import reveal from "./components/reveal/index"
 import loader from "./components/loader/index"
 import list from "./components/list/index"
 import element from "./components/element/index"
+import sidebar from "./components/sidebar/index"
+
 import test from "./components/test/index"
 const components = [
     buttons,
@@ -38,6 +40,7 @@ const components = [
     loader,
     list,
     element,
+    sidebar
 ];
 
 //test case
