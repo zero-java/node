@@ -13,195 +13,279 @@
 
   <title>哈哈</title>
 </head>
-<body>
-<div id="app"></div>
+<style>
+    .following{
+        position: fixed;
+        top: 0px;
+        z-index: 900;
+        left: 0%;
+        padding: 2em 0em;
+        width: 100%;
+        box-shadow: 0px 0px 0px 0px transparent;
+        border-bottom: 1px solid transparent;
+        transition: padding 0.5s ease, background 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+    }
+    .full{
+        height: 100%;
+    }
+    .light{
+        padding: 1em 0em;
+        background-color: #FFFFFF;
+        border-bottom: 1px solid #DDDDDD;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
+    }
+</style>
+<body style="height: 1980px">
+
+<div class="following bar">
+    <div class="ui container">
+        <div class="ui large secondary network menu inverted">
+            <div class="item"><img src="/images/item.jpg"></div>
+            <div class="item"><i class="content icon"></i></div>
+            <div class="right menu inverted">
+                <div class="item">
+                    <div class="ui basic inverted animated white button">
+                        <div class="visible content"><i class="user icon"></i></div>
+                        <div class="hidden content">hello</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item">
+                        <div class="ui basic inverted animated white button">
+                            <div class="visible content"><i class="power icon"></i></div>
+                            <div class="hidden content">out</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui full segment" style="background: teal;margin: 0"></div>
+<!--<div id="app"></div>-->
 
 </body >
 <script>
     "use strict"
+    $(function(){
+        $(window).scroll(function(event){
+            if($(window).scrollTop()>10){
+                $(".following.bar").addClass("light").find(".menu").removeClass("inverted").find(".animated.button").removeClass("inverted");
+            }else{
+                $(".following.bar").removeClass("light").find(".menu").addClass("inverted").find(".animated.button").addClass("inverted");
+            }
 
-  var vm=new Vue({
-    el:'#app',
-     template:'<se-container><se-buttons v-if="buttons">' +
-     '<se-button v-for="button in buttons" :classes="button.classes" @click="click">' +
-     '<template v-if="button.classes.animated">' +
-     '<div class="visible content" ><se-icon :classes="button.content.visible.icon"></se-icon>{{button.content.visible.text}}</div><div class="hidden content"><se-icon :classes="button.content.hidden.icon"></se-icon>{{button.content.hidden.text}}</div>' +
-     '</template>' +
-     '<template v-else>{{button.content}}</template>' +
-     '</se-button>' +
-     '</se-buttons>' +
-     '<se-divider class="horizontal"><i class="user icon"></i>test</se-divider>' +
-     '<se-header>哈哈</se-header>' +
-     '<se-reveal :classes="{move:true}">' +
-     '<se-button :classes="{red:true}" slot="visible">visible</se-button>' +
-     '<se-button :classes="{teal:true}" slot="hidden">visible</se-button>' +
-     '</se-reveal>' +
-     '<se-steps><se-step>1</se-step></se-steps>' +
-     '<se-loader :classes="{text:true,active:true}" :text="\'哈哈\'"></se-loader>' +
-     '<se-list :list="list" :classes="list.classes"></se-list>' +
-     '<s-el :tag="tag"></s-el>' +
-     '<spring-boot-test/>' +
-     '</se-container>',
-    data:{
-      clazz:{red:true},
-      tag:'a',
-      icon:'user',
-      text:'哈哈',
-      icons:["user","user","user","user","user","user","user",],
-      buttons:[
-          {
-          classes:{
-              fade:true,
-              animated:true,
-          },
-          content:{
-              visible:{icon:{user:true},text:'哈哈'},
-              hidden:{icon:{mail:true},text:'嘿嘿'},
-          }
-          },
-          {
-              classes:{
-                  teal:true
-              },
-              content:'啦啦'
-          }
-      ],
+        })
+    })
 
-        list:{
-          items:[
-            {icon:{folder:true},content:{description:'root1'},
-                list:{
-                items:[
-                {icon:{mail:true},content:{description:'root1-1'},
-                    list:{
-                        items:[
-                            {icon:{file :true},content:{description:'root1-1-1'},
-                                list:{
-                                    classes:{horizontal :true},
-                                    items:[
-                                        {icon:{idea:true},content:'root1-1-1-1'},
-
-                                        {icon:{idea:true},content:'root1-1-2'}
-                                    ]
-                                }
-                            },
-                            {icon:{file :true},content:'哈哈'}
-                        ]
-                    }
-                },
-                {icon:{mail:true},content:'root1-2'}
-                    ]
-                    }},
-            {icon:{folder :true},content:{description:'root2'}},
-            {icon:{folder :true},content:'root3'}
-        ]
-      }
-    },
-    methods:{
-        click(index,name){
-        console.log(name)
-        if(index>=0) this.icons.splice(index,1,"red user");
-      },
-
-
-    }
-  });
-
-  var testObj={
-      test1:{t:1},
-      test2:2,
-      test3:3
-  }
-
-
-class Observer{
-      constructor(value){
-          this.value = value;
-          this.walk();
-      }
-
-      walk(){
-         Object.keys(this.value).forEach((k)=>this.observerValue(k,this.value[k]))
-      }
-
-      observerValue(key,value){
-          let dep = new Dep();
-          let val = $.isPlainObject(value)?new Observer(value):value;
-          Object.defineProperty(this.value,key,{
-              enumerable:true,
-              configurable:true,
-              get:()=>{
-                  if(Dep.target){
-                      dep.addWatcher(Dep.target);
-                  }
-                 return val.value?val.value:val
-              },
-              set:newVal=>{
-                  val= $.isPlainObject(newVal)?new Observer(newVal):newVal
-                  dep.notify();
-              }
-          })
-      }
-}
-
- class Dep{
-      constructor(){
-          this.watchers = [];
-      }
-
-      addWatcher(watcher){
-          this.watchers.push(watcher);
-      }
-
-     notify(){
-          this.watchers.forEach(watcher=>watcher.update())
-      }
- }
-
- class Watcher{
-      constructor(obj,express,cb){
-          this.data = obj;
-          this.expression = express;
-          this.cb = cb;
-          this.value = this.get();
-      }
-
-      update(){
-          const value = this.get();
-          if(value!=this.value){
-              this.value = value;
-              this.cb();
-          }
-      }
-
-     get(){
-          return  this.getValue(this.data,this.expression);
-     }
-
-     getValue(obj,express){
-         let point = express.indexOf(".",0);
-         if(point!=-1){
-             let key =  express.substring(0,point);
-             let value = obj[key];
-            return this.getValue(value,express.substring(point+1,express.length))
-         }else{
-             Dep.target = this;
-             let val = obj[express]
-             Dep.target = null;
-             return val;
-         }
-
-     }
-
- }
-  new Observer(testObj);
-  new Watcher(testObj,"test1.t",function(){
-      console.log("test1");
-  })
-  testObj.test1.t=3;
-    testObj.test2=5;
-  console.log(testObj.test1.t);
-    console.log(testObj.test2);
+//
+//    $('body')
+//        .visibility({
+//            offset         : -10,
+//            observeChanges : false,
+//            once           : false,
+//            continuous     : false,
+//            onTopPassed: function() {
+//                requestAnimationFrame(function() {
+//                    $('.following.bar')
+//                        .addClass('light fixed')
+//                        .find('.menu')
+//                        .removeClass('inverted')
+//                    ;
+//                });
+//            },
+//            onTopPassedReverse: function() {
+//                requestAnimationFrame(function() {
+//                    $('.following.bar')
+//                        .removeClass('light fixed')
+//                        .find('.menu')
+//                        .addClass('inverted')
+//                    ;
+//                });
+//            }
+//        })
+//  var vm=new Vue({
+////    el:'#app',
+//     template:'<se-container><se-buttons v-if="buttons">' +
+//     '<se-button v-for="button in buttons" :classes="button.classes" @click="click">' +
+//     '<template v-if="button.classes.animated">' +
+//     '<div class="visible content" ><se-icon :classes="button.content.visible.icon"></se-icon>{{button.content.visible.text}}</div><div class="hidden content"><se-icon :classes="button.content.hidden.icon"></se-icon>{{button.content.hidden.text}}</div>' +
+//     '</template>' +
+//     '<template v-else>{{button.content}}</template>' +
+//     '</se-button>' +
+//     '</se-buttons>' +
+//     '<se-divider class="horizontal"><i class="user icon"></i>test</se-divider>' +
+//     '<se-header>哈哈</se-header>' +
+//     '<se-reveal :classes="{move:true}">' +
+//     '<se-button :classes="{red:true}" slot="visible">visible</se-button>' +
+//     '<se-button :classes="{teal:true}" slot="hidden">visible</se-button>' +
+//     '</se-reveal>' +
+//     '<se-steps><se-step>1</se-step></se-steps>' +
+//     '<se-loader :classes="{text:true,active:true}" :text="\'哈哈\'"></se-loader>' +
+//     '<se-list :list="list" :classes="list.classes"></se-list>' +
+//     '<s-el :tag="tag"></s-el>' +
+//     '<spring-boot-test/>' +
+//     '</se-container>',
+//    data:{
+//      clazz:{red:true},
+//      tag:'a',
+//      icon:'user',
+//      text:'哈哈',
+//      icons:["user","user","user","user","user","user","user",],
+//      buttons:[
+//          {
+//          classes:{
+//              fade:true,
+//              animated:true,
+//          },
+//          content:{
+//              visible:{icon:{user:true},text:'哈哈'},
+//              hidden:{icon:{mail:true},text:'嘿嘿'},
+//          }
+//          },
+//          {
+//              classes:{
+//                  teal:true
+//              },
+//              content:'啦啦'
+//          }
+//      ],
+//
+//        list:{
+//          items:[
+//            {icon:{folder:true},content:{description:'root1'},
+//                list:{
+//                items:[
+//                {icon:{mail:true},content:{description:'root1-1'},
+//                    list:{
+//                        items:[
+//                            {icon:{file :true},content:{description:'root1-1-1'},
+//                                list:{
+//                                    classes:{horizontal :true},
+//                                    items:[
+//                                        {icon:{idea:true},content:'root1-1-1-1'},
+//
+//                                        {icon:{idea:true},content:'root1-1-2'}
+//                                    ]
+//                                }
+//                            },
+//                            {icon:{file :true},content:'哈哈'}
+//                        ]
+//                    }
+//                },
+//                {icon:{mail:true},content:'root1-2'}
+//                    ]
+//                    }},
+//            {icon:{folder :true},content:{description:'root2'}},
+//            {icon:{folder :true},content:'root3'}
+//        ]
+//      }
+//    },
+//    methods:{
+//        click(index,name){
+//        console.log(name)
+//        if(index>=0) this.icons.splice(index,1,"red user");
+//      },
+//
+//
+//    }
+//  });
+//
+//  var testObj={
+//      test1:{t:1},
+//      test2:2,
+//      test3:3
+//  }
+//
+//
+//class Observer{
+//      constructor(value){
+//          this.value = value;
+//          this.walk();
+//      }
+//
+//      walk(){
+//         Object.keys(this.value).forEach((k)=>this.observerValue(k,this.value[k]))
+//      }
+//
+//      observerValue(key,value){
+//          let dep = new Dep();
+//          let val = $.isPlainObject(value)?new Observer(value):value;
+//          Object.defineProperty(this.value,key,{
+//              enumerable:true,
+//              configurable:true,
+//              get:()=>{
+//                  if(Dep.target){
+//                      dep.addWatcher(Dep.target);
+//                  }
+//                 return val.value?val.value:val
+//              },
+//              set:newVal=>{
+//                  val= $.isPlainObject(newVal)?new Observer(newVal):newVal
+//                  dep.notify();
+//              }
+//          })
+//      }
+//}
+//
+// class Dep{
+//      constructor(){
+//          this.watchers = [];
+//      }
+//
+//      addWatcher(watcher){
+//          this.watchers.push(watcher);
+//      }
+//
+//     notify(){
+//          this.watchers.forEach(watcher=>watcher.update())
+//      }
+// }
+//
+// class Watcher{
+//      constructor(obj,express,cb){
+//          this.data = obj;
+//          this.expression = express;
+//          this.cb = cb;
+//          this.value = this.get();
+//      }
+//
+//      update(){
+//          const value = this.get();
+//          if(value!=this.value){
+//              this.value = value;
+//              this.cb();
+//          }
+//      }
+//
+//     get(){
+//          return  this.getValue(this.data,this.expression);
+//     }
+//
+//     getValue(obj,express){
+//         let point = express.indexOf(".",0);
+//         if(point!=-1){
+//             let key =  express.substring(0,point);
+//             let value = obj[key];
+//            return this.getValue(value,express.substring(point+1,express.length))
+//         }else{
+//             Dep.target = this;
+//             let val = obj[express]
+//             Dep.target = null;
+//             return val;
+//         }
+//
+//     }
+//
+// }
+//  new Observer(testObj);
+//  new Watcher(testObj,"test1.t",function(){
+//      console.log("test1");
+//  })
+//  testObj.test1.t=3;
+//    testObj.test2=5;
+//  console.log(testObj.test1.t);
+//    console.log(testObj.test2);
 
 
 </script>
