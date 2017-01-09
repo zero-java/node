@@ -22,11 +22,11 @@ class LocalStorageProxy{
         window.localProxy = this;
     }
     setValue(k,v){
-        this.nativeSetter.bind(this.localStorage).call(k,v);
+        this.nativeSetter.bind(this.localStorage)(k,v);
     }
 
     getValue(k){
-        this.nativeGetter.bind(this.localStorage).call(k)
+        return this.nativeGetter.bind(this.localStorage)(k)
     }
 
     /**
@@ -153,5 +153,5 @@ class AjaxProxy{
 
 }
 
-new AjaxProxy();
-new LocalStorageProxy();
+const  _ajaxProxy_ = new AjaxProxy();
+const _localProxy_ =new LocalStorageProxy();
