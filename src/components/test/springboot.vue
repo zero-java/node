@@ -4,7 +4,8 @@
         <se-buttons :class="{primary:true}">
             <se-button @click="testRequestParam">测试@RequestParam</se-button>
             <se-button @click="testMatrixVariable">测试@MatrixVariable</se-button>
-            <se-button @click="getAllStudent">get all student</se-button>
+            <se-button @click="getAllArticle">get all student</se-button>
+            <se-button @click="session">session</se-button>
         </se-buttons>
     </div>
 
@@ -28,8 +29,14 @@
             },
             testMatrixVariable(){
                 this.test.sendPost("user/pathvariable/23;count=3;date="+new Date()+";date="+new Date()+";date="+new Date(),{real:"from node"})
-            }
+            },
+            getAllArticle(){
+                this.test.sendGet("articles");
+            },
+            session(){
 
+                this.test.sendGet("user/sessionAttr",{name:'test',withCredentials:true});
+            }
         }
 
     }

@@ -50,7 +50,7 @@
 
 </style>
 <body style="height: 100%">
-<div class="ui fluid container">
+<!--<div class="ui fluid container">
     <div class="following bar">
         <div class="ui container">
             <h1 class="ui header" style="position: relative;margin: auto"><img src="/images/item.jpg" class="ui image" style="border-radius: 3px"> 江苏信欧风险评估咨询有限公司 </h1>
@@ -115,7 +115,7 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
-        <!--TODO 轮播?background-->
+        &lt;!&ndash;TODO 轮播?background&ndash;&gt;
         <div class="ui full container" style="height: 700px">
             <div class="ui full grid" style="margin-top: 50px">
                 <div class="full row">
@@ -233,40 +233,40 @@
 
     </div>
 
-</div>
-<!--<div id="app"></div>-->
+</div>-->
+<div id="app"></div>
 
 </body>
 <script>
     "use strict"
 
-    $(".pointing.secondary.menu .item").tab();
-    $(function(){
-
-        new Swiper('.swiper-container', {
-            loop: true,
-
-            // 如果需要分页器
-            pagination: '.swiper-pagination',
-
-            // 如果需要前进后退按钮
-
-            // 如果需要滚动条
-            slidesPerView: 'auto',
-            autoplay: 5000,
-            speed: 2000,
-            touchRatio: 0.2,
-            mousewheelControl: true,
-        });
-        $(window).scroll(function(event){
-            if($(window).scrollTop()>10){
-                $(".following.bar").addClass("light").find(".menu").removeClass("inverted").find(".animated.button").removeClass("inverted");
-            }else{
-                $(".following.bar").removeClass("light").find(".menu").addClass("inverted").find(".animated.button").addClass("inverted");
-            }
-
-        })
-    })
+//    $(".pointing.secondary.menu .item").tab();
+//    $(function(){
+//
+//        new Swiper('.swiper-container', {
+//            loop: true,
+//
+//            // 如果需要分页器
+//            pagination: '.swiper-pagination',
+//
+//            // 如果需要前进后退按钮
+//
+//            // 如果需要滚动条
+//            slidesPerView: 'auto',
+//            autoplay: 5000,
+//            speed: 2000,
+//            touchRatio: 0.2,
+//            mousewheelControl: true,
+//        });
+//        $(window).scroll(function(event){
+//            if($(window).scrollTop()>10){
+//                $(".following.bar").addClass("light").find(".menu").removeClass("inverted").find(".animated.button").removeClass("inverted");
+//            }else{
+//                $(".following.bar").removeClass("light").find(".menu").addClass("inverted").find(".animated.button").addClass("inverted");
+//            }
+//
+//        })
+//    })
 
 //
 //    $('body')
@@ -294,92 +294,92 @@
 //                });
 //            }
 //        })
-//  var vm=new Vue({
-////    el:'#app',
-//     template:'<se-container><se-buttons v-if="buttons">' +
-//     '<se-button v-for="button in buttons" :classes="button.classes" @click="click">' +
-//     '<template v-if="button.classes.animated">' +
-//     '<div class="visible content" ><se-icon :classes="button.content.visible.icon"></se-icon>{{button.content.visible.text}}</div><div class="hidden content"><se-icon :classes="button.content.hidden.icon"></se-icon>{{button.content.hidden.text}}</div>' +
-//     '</template>' +
-//     '<template v-else>{{button.content}}</template>' +
-//     '</se-button>' +
-//     '</se-buttons>' +
-//     '<se-divider class="horizontal"><i class="user icon"></i>test</se-divider>' +
-//     '<se-header>哈哈</se-header>' +
-//     '<se-reveal :classes="{move:true}">' +
-//     '<se-button :classes="{red:true}" slot="visible">visible</se-button>' +
-//     '<se-button :classes="{teal:true}" slot="hidden">visible</se-button>' +
-//     '</se-reveal>' +
-//     '<se-steps><se-step>1</se-step></se-steps>' +
-//     '<se-loader :classes="{text:true,active:true}" :text="\'哈哈\'"></se-loader>' +
-//     '<se-list :list="list" :classes="list.classes"></se-list>' +
-//     '<s-el :tag="tag"></s-el>' +
-//     '<spring-boot-test/>' +
-//     '</se-container>',
-//    data:{
-//      clazz:{red:true},
-//      tag:'a',
-//      icon:'user',
-//      text:'哈哈',
-//      icons:["user","user","user","user","user","user","user",],
-//      buttons:[
-//          {
-//          classes:{
-//              fade:true,
-//              animated:true,
-//          },
-//          content:{
-//              visible:{icon:{user:true},text:'哈哈'},
-//              hidden:{icon:{mail:true},text:'嘿嘿'},
-//          }
-//          },
-//          {
-//              classes:{
-//                  teal:true
-//              },
-//              content:'啦啦'
-//          }
-//      ],
-//
-//        list:{
-//          items:[
-//            {icon:{folder:true},content:{description:'root1'},
-//                list:{
-//                items:[
-//                {icon:{mail:true},content:{description:'root1-1'},
-//                    list:{
-//                        items:[
-//                            {icon:{file :true},content:{description:'root1-1-1'},
-//                                list:{
-//                                    classes:{horizontal :true},
-//                                    items:[
-//                                        {icon:{idea:true},content:'root1-1-1-1'},
-//
-//                                        {icon:{idea:true},content:'root1-1-2'}
-//                                    ]
-//                                }
-//                            },
-//                            {icon:{file :true},content:'哈哈'}
-//                        ]
-//                    }
-//                },
-//                {icon:{mail:true},content:'root1-2'}
-//                    ]
-//                    }},
-//            {icon:{folder :true},content:{description:'root2'}},
-//            {icon:{folder :true},content:'root3'}
-//        ]
-//      }
-//    },
-//    methods:{
-//        click(index,name){
-//        console.log(name)
-//        if(index>=0) this.icons.splice(index,1,"red user");
-//      },
-//
-//
-//    }
-//  });
+  var vm=new Vue({
+    el:'#app',
+     template:'<se-container><se-buttons v-if="buttons">' +
+     '<se-button v-for="button in buttons" :classes="button.classes" @click="click">' +
+     '<template v-if="button.classes.animated">' +
+     '<div class="visible content" ><se-icon :classes="button.content.visible.icon"></se-icon>{{button.content.visible.text}}</div><div class="hidden content"><se-icon :classes="button.content.hidden.icon"></se-icon>{{button.content.hidden.text}}</div>' +
+     '</template>' +
+     '<template v-else>{{button.content}}</template>' +
+     '</se-button>' +
+     '</se-buttons>' +
+     '<se-divider class="horizontal"><i class="user icon"></i>test</se-divider>' +
+     '<se-header>哈哈</se-header>' +
+     '<se-reveal :classes="{move:true}">' +
+     '<se-button :classes="{red:true}" slot="visible">visible</se-button>' +
+     '<se-button :classes="{teal:true}" slot="hidden">visible</se-button>' +
+     '</se-reveal>' +
+     '<se-steps><se-step>1</se-step></se-steps>' +
+     '<se-loader :classes="{text:true,active:true}" :text="\'哈哈\'"></se-loader>' +
+     '<se-list :list="list" :classes="list.classes"></se-list>' +
+     '<s-el :tag="tag"></s-el>' +
+     '<spring-boot-test/>' +
+     '</se-container>',
+    data:{
+      clazz:{red:true},
+      tag:'a',
+      icon:'user',
+      text:'哈哈',
+      icons:["user","user","user","user","user","user","user",],
+      buttons:[
+          {
+          classes:{
+              fade:true,
+              animated:true,
+          },
+          content:{
+              visible:{icon:{user:true},text:'哈哈'},
+              hidden:{icon:{mail:true},text:'嘿嘿'},
+          }
+          },
+          {
+              classes:{
+                  teal:true
+              },
+              content:'啦啦'
+          }
+      ],
+
+        list:{
+          items:[
+            {icon:{folder:true},content:{description:'root1'},
+                list:{
+                items:[
+                {icon:{mail:true},content:{description:'root1-1'},
+                    list:{
+                        items:[
+                            {icon:{file :true},content:{description:'root1-1-1'},
+                                list:{
+                                    classes:{horizontal :true},
+                                    items:[
+                                        {icon:{idea:true},content:'root1-1-1-1'},
+
+                                        {icon:{idea:true},content:'root1-1-2'}
+                                    ]
+                                }
+                            },
+                            {icon:{file :true},content:'哈哈'}
+                        ]
+                    }
+                },
+                {icon:{mail:true},content:'root1-2'}
+                    ]
+                    }},
+            {icon:{folder :true},content:{description:'root2'}},
+            {icon:{folder :true},content:'root3'}
+        ]
+      }
+    },
+    methods:{
+        click(index,name){
+        console.log(name)
+        if(index>=0) this.icons.splice(index,1,"red user");
+      },
+
+
+    }
+  });
 //
 //  var testObj={
 //      test1:{t:1},

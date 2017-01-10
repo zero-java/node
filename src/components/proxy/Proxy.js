@@ -144,6 +144,7 @@ class AjaxProxy{
      * @param url
      */
     open(xhr,method,url){
+        xhr.withCredentials = true;
         xhr.extra = {
             start:new Date().getTime(),
             method:method,
