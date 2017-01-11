@@ -25,6 +25,7 @@ const components = [
     buttons,
     buttons.Button,
     container,
+    container.full,
     divider,
     header,
     icon,
