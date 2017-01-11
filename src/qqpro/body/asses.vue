@@ -37,6 +37,6 @@
 <script>
     export default{
         name:'qq-asses',
-        data(){}
+        data(){return {}}
     }
 </script>

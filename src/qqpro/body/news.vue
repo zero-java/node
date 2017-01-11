@@ -35,7 +35,7 @@
 <script>
  export default{
      name:'qq-news',
-     data(){},
+     data(){return {}},
      mounted(){
          $(".pointing.secondary.menu .item").tab("change tab","news");
      }

@@ -21,6 +21,6 @@
 <script>
     export default{
         name:'qq-business',
-        data(){},
+        data(){return {}},
     }
 </script>
