@@ -24,9 +24,9 @@
 
 </style>
 <script>
-    import settings from "./../settings/Settings";
-    import container from "./../../components/container/index";
-    import header from "./../../components/header/index";
+    import settings from "../settings/Settings";
+    import container from "../../components/container/index";
+    import header from "../../components/header/index";
     export default {
         name:'qq-nav',
         props:{
