@@ -12,23 +12,18 @@
 
 </style>
 <script>
-    import settings from "./../settings/Settings"
     export default {
         name:'qq-banner',
-
+        props:{
+            images:Array
+        },
         data(){
             return {
-                images:[
-                    settings.default.banner,
-                    settings.default.banner,
-                    settings.default.banner,
-                    settings.default.banner
-                ]
+
 
             }
         },
-
-        mounted:function(){
+        mounted(){
             new Swiper('#banner', {
                 loop: true,
 

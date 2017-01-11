@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/javascripts/semantic/semantic.min.css">
+    <link type="text/css" rel="stylesheet" href="/javascripts/swiper/css/swiper.min.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css">
+    <script src="/javascripts/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/mvvm/vue.js"></script>
+    <script src="/javascripts/semantic/semantic.min.js"></script>
+    <script src="/javascripts/then/then.js"></script>
+    <script src="/javascripts/sevue/sevue.js"></script>
+    <script src="/javascripts/swiper/js/swiper.js"></script>
+    <!--<script src="/javascripts/Proxy.js"></script>-->
+
+    <title>哈哈</title>
+</head>
+<style>
+    .following{
+        position: fixed;
+        top: 0px;
+        z-index: 900;
+        left: 0%;
+        padding: 2em 0em;
+        width: 100%;
+        box-shadow: 0px 0px 0px 0px transparent;
+        border-bottom: 1px solid transparent;
+        transition: padding 0.5s ease, background 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+    }
+    .full{
+        height: 100%;
+    }
+    .light{
+        padding: 1em 0em;
+        background-color: #FFFFFF;
+        border-bottom: 1px solid #DDDDDD;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .animated.basic.button{
+        width: 140px;
+    }
+    .secondary.network.menu .menu .item{
+        margin-left: 20px;
+    }
+
+    .swiper-slide{
+        height:100%;
+    }
+
+    .logo{
+        min-width: 5em;
+        border-radius: 3px
+    }
+    .nav{
+        margin-top: 2.3em;
+    }
+
+</style>
+<body>
+<div class="ui fluid container" id="app">
+    <qq-nav></qq-nav>
+    <div class="ui full segments" style="margin: 0;background-color: gainsboro;">
+
+        <qq-banner :images="images"></qq-banner>
+
+        <!--TODO 轮播?background-->
+        <div class="ui full container" style="height: 100%;padding: 3px">
+            <div class="ui full grid">
+                <div class="full row">
+                    <div class="six wide column">
+                        <qq-business></qq-business>
+                    </div>
+                    <div class="ten wide column">
+                        <div class="ui segment">
+                            <div class="ui pointing secondary menu">
+                                <a class="item" data-tab="news">新闻动态</a>
+                                <a class="item active" data-tab="ping">评估动态</a>
+                            </div>
+                            <qq-asses></qq-asses>
+                            <qq-news></qq-news>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <qq-footer></qq-footer>
+    </div>
+</div>
+
+</body>
+<script>
+new Vue({
+    el:"#app",
+    data:{
+        images:[
+            '/images/item.jpg',
+            '/images/item.jpg',
+            '/images/item.jpg',
+            '/images/item.jpg',
+            '/images/item.jpg',
+        ]
+    },
+    mounted(){
+
+    },
+    method:{}
+})
+
+</script>
+
+</html>

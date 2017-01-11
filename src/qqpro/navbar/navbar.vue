@@ -1,15 +1,15 @@
 <template>
-    <fluid-container>
+    <container :class="{fluid:true}">
         <div class="following bar">
             <container>
-                <header><img :src="log" class="ui logo image">{{description}}</header>
+                <_header :classes="{huge:true}"><img :src="logo" class="ui logo image">{{description}}</_header>
             </container>
             <container :classes="{nav:true}">
                 <div class="ui large secondary network menu">
                     <template v-if="buttons" v-for="button in buttons">
                         <div class="item">
                             <se-button :classes="buttonClasses" @click="navButtonClick">
-                                <div class="visible content"><se-icon :></se-icon><i classes="button.icon"></i></div>
+                                <div class="visible content"><se-icon :classes="button.icon"></se-icon></div>
                                 <div class="hidden content">{{button.text}}</div>
                             </se-button>
                         </div>
@@ -18,15 +18,15 @@
             </container>
 
         </div>
-    </fluid-container>
+    </container>
 </template>
 <style>
 
 </style>
 <script>
     import settings from "./../settings/Settings";
-    import container from "./components/container/index";
-    import header from "./components/header/index";
+    import container from "./../../components/container/index";
+    import header from "./../../components/header/index";
     export default {
         name:'qq-nav',
         props:{
@@ -36,7 +36,6 @@
             },
             buttons:{
                 type:Array,
-                required:true,
                 default:function(){
                     return [
                         {
@@ -67,7 +66,10 @@
                     ]
                 }
             },
-            description:String
+            description:{
+                type:String,
+                default:"江苏信欧风险评估咨询有限公司"
+            }
 
 
         },
@@ -88,8 +90,18 @@
         },
         components:{
             container:container,
-            header:header,
+            _header:header,
             fullContainer:container.full
+        },
+        mounted(){
+            $(window).scroll(function(event){
+                if($(window).scrollTop()>10){
+                    $(".following.bar").addClass("light").find(".menu").removeClass("inverted").find(".animated.button").removeClass("inverted");
+                }else{
+                    $(".following.bar").removeClass("light").find(".menu").addClass("inverted").find(".animated.button").addClass("inverted");
+                }
+
+            })
         }
     }
 

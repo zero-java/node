@@ -19,13 +19,12 @@ import loader from "./components/loader/index"
 import list from "./components/list/index"
 import element from "./components/element/index"
 import sidebar from "./components/sidebar/index"
-
+import qqpro from "./qqpro/index"
 import test from "./components/test/index"
 const components = [
     buttons,
     buttons.Button,
     container,
-    container.full,
     divider,
     header,
     icon,
@@ -46,5 +45,5 @@ const components = [
 
 //test case
 test.forEach(e=>components.push(e));
-
+qqpro.forEach(e=>components.push(e));
 components.forEach(component=>Vue.component(component.name,component));
