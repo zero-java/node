@@ -21,18 +21,13 @@
             </tbody>
         </table>
 
-        <div class="ui page menu" v-if="data.totalPages>0">
-            <a class="item" @click="getPage(0)">首页</a>
-            <a class="item" @click="getPage(data.number-1)"><i class="left chevron icon"></i></a>
-           <a class="item" :class="{active:n==data.number}"  v-for="n in pages"  @click="getPage(n)">{{n+1}}</a>
-            <a class="item" @click="getPage(data.number+1)"><i class="right chevron icon"></i></a>
-            <a class="item" @click="getPage(data.totalPages-1)">尾页</a>
-        </div>
+        <pager ref="pager" :page="data" :showPage="3" @pageItemClick="getPage"></pager>
     </div>
 </template>
 
 <script>
     import test from "./../../../components/test/Test"
+    import pager from "./../../../components/pager/pager.vue"
     export default{
         name:'background-table',
         data(){
@@ -51,18 +46,11 @@
                     content:[],
                 },
                 test:test(8011),
-                pages:[],
-                showPage:3
             }
         },
         created(){
             this.getPage(0);
             this.isInit = true;
-        },
-        computed:{
-            active:function(){
-                return this.data.number+1
-            }
         },
 
         methods:{
@@ -80,41 +68,18 @@
                 this.test.sendGet(`/articles/${now}/${vm.data.size}`,{},function(data){
                     vm.data = data;
                     vm.articles = data.content;
-                    vm.pages = vm.getPagesArray();
                     vm.loading = false;
+                    vm.$nextTick(function(){
+                        vm.$refs.pager.refresh();
+
+                    });
                 })
 
             },
-            getPagesArray(){
-                //首页
-                let showPages = this.showPage*2;
-                if(this.data.first){
-                    //展示页数超过总页数
-                    if(this.data.totalPages<showPages){
-                        return this.getRangeArray(0,this.data.totalPages);
-                    }else{
-                        return this.getRangeArray(0,showPages);
-                    }
-                }else{
-                    let totalPages = this.data.totalPages;
-                    let now = this.data.number;
-                    let showPage = this.showPage;
-                    let min = now-showPage;
-                    let max = now+showPage;
-                    min = min<0?0:min;
-                    max = max>totalPages?totalPages:max;
-                    max = min==0&&totalPages>showPages?showPages:max;
-                    return this.getRangeArray(min,max);
-                }
-            },
-            getRangeArray(start,end){
-                let array = [];
-                for(let x=start;x<end;x++){
-                    array.push(x);
-                }
 
-                return array;
-            }
+        },
+        components:{
+            pager:pager
         }
     }
 </script>
