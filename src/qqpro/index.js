@@ -3,4 +3,5 @@
  */
 import body from "./body/body.vue"
 import nav from "./nav/navbar.vue"
-export default [body,nav]
+import table from "./body/background/index";
+export default [body,nav,table]

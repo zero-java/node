@@ -1,0 +1,9 @@
+
+
+@function transitionCreator($time,$speed){
+  @return padding $time $speed, background $time $speed, box-shadow$time $speed, border $time $speed
+}
+
+@function getBoxShadow($shadowX,$shadowY ,$padding, $size ,$color){
+  @return $shadowX $shadowY $padding $size $color
+}

@@ -9,4 +9,8 @@ router.get('/', function(req, res, next) {
     res.render('qqpro/index', cache);
 });
 
+router.get("/background",function(req,res,next){
+    res.render('qqpro/background')
+});
+
 module.exports = router;

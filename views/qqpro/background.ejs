@@ -21,28 +21,38 @@
 </style>
 <body>
 <div class="ui fluid container" id="app">
-    <qq-nav></qq-nav>
-    <qq-content :images="images"></qq-content>
-</div>
+    <div class="ui grid" style="margin-top: 3em ">
+        <div class="row">
+            <div class="four wide column">
+                <div class="ui vertical  menu" style="margin: auto">
+                    <div class="item"><i class="file text icon"></i>文章管理</div>
+                </div>
+            </div>
+            <div class="ten wide column">
+                <background-table></background-table>
+            </div>
+        </div>
+    </div>
 
+</div>
 </body>
 <script>
-new Vue({
-    el:"#app",
-    data:{
-        images:[
-            '/images/item.jpg',
-            '/images/item.jpg',
-            '/images/item.jpg',
-            '/images/item.jpg',
-            '/images/item.jpg',
-        ]
-    },
-    mounted(){
+    new Vue({
+        el:"#app",
+        data:{
+            images:[
+                '/images/item.jpg',
+                '/images/item.jpg',
+                '/images/item.jpg',
+                '/images/item.jpg',
+                '/images/item.jpg',
+            ]
+        },
+        mounted(){
 
-    },
-    method:{}
-})
+        },
+        method:{}
+    })
 
 </script>
 

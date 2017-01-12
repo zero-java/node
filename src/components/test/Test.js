@@ -32,5 +32,9 @@
 
 const test = new Test(8000);
 
- export default test;
+ export default function(port,domain){
+     if(arguments.length==0) return test;
+     if(arguments.length==1) return new Test(port);
+     return new Test(port,domain);
+ };
 

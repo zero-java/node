@@ -1,10 +1,51 @@
 
 
 @import "components/Color";
-#test {
-    color:$red;
+@import "components/Utils";
+.following{
+  position:fixed;
+  top: 0;
+  z-index: 900;
+  left: 0%;
+  padding: 2em 0em;
+  width:100%;
+  box-shadow:getBoxShadow(0,0,0,0,$transparent);
+  transition: transitionCreator(0.5s,ease);
+}
+.logo{
+  min-width: 5em;
+  border-radius: 3px
+}
+.nav{
+  margin-top: 2.3em;
+}
+.full{
+  height: 100%;
+}
 
-  li {
-       background: $blue;
+.light{
+  padding: 1em 0em;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #DDDDDD;
+  box-shadow: getBoxShadow(0px,2px,3px,3px,rgba(0,0,0,0.04));
+}
+
+.animated.basic.button{
+  width:140px;
+}
+
+.secondary.network.menu{
+    .menu{
+      .item{
+        margin-left: 20px;
+      }
     }
+}
+.page.menu{
+  .active.item{
+    background: cadetblue;
+  }
+  .item.active{
+    background: cadetblue;
+  }
 }
