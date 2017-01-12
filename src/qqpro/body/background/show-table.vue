@@ -1,15 +1,18 @@
 <template>
     <div>
-        <table class="ui celled striped table">
+        <table class="ui basic table">
             <thead>
             <tr>
-                <th>编号</th><th>标题</th><th>发布人</th><th>内容</th><th>日期</th><th>浏览量</th>
+                <th><div class="ui icon button" @click="showCreateForm"><i class="plus icon"></i></div></th><th>编号</th><th>标题</th><th>发布人</th><th>内容</th><th>日期</th><th>浏览量</th>
             </tr>
             </thead>
             <tbody>
 
             <tr v-if="articles" v-for="article in articles">
-
+                <td class="collapsing"><div class="ui icon buttons">
+                    <div class="ui button" @click="deleteArticle(article.id)"><i class="trash icon"></i></div>
+                    <div class="ui button"><i class="edit icon"></i></div>
+                </div></td>
                 <td>{{article.id}}</td>
                 <td>{{article.title}}</td>
                 <td>{{article.author}}</td>
@@ -22,18 +25,26 @@
         </table>
 
         <pager ref="pager" :page="data" :showPage="3" @pageItemClick="getPage"></pager>
+        <div class="ui article modal">
+            <div class="header">创建文章</div>
+            <div class="content">
+                <article-form :url="create" @createSuccess="created"></article-form>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     import test from "./../../../components/test/Test"
     import pager from "./../../../components/pager/pager.vue"
+    import articleForm from "./article-form.vue"
     export default{
         name:'background-table',
         data(){
             return{
                 isInit:false,
                 loading:false,
+                create:'/articles',
                 articles:[],
                 data:{
                     totalElements:0,
@@ -77,9 +88,34 @@
 
             },
 
+            deleteArticle(id){
+                let vm = this;
+                console.log(`delete ${id}`);
+                this.test.sendDelete(`/articles/${id}`,{},function(){
+                    vm.reload();
+                })
+            },
+
+            reload(){
+                this.getPage(this.data.number);
+            },
+            update(){},
+            showCreateForm(){
+                this.$nextTick(function(){
+                    $(".ui.article.modal").modal("toggle");
+                })
+            },
+            created(){
+                this.$nextTick(function(){
+                    $(".ui.article.modal").modal("toggle");
+                    this.reload();
+                });
+            }
+
         },
         components:{
-            pager:pager
+            pager:pager,
+            articleForm:articleForm
         }
     }
 </script>
