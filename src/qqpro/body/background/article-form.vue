@@ -15,7 +15,7 @@
             </div>
             <div class="field">
                 <label>内容</label>
-                <input type="text" name="content" placeholder="请输入内容" :value="article.content">
+                <textarea id="container" name="content" ></textarea>
             </div>
             <div class="ui button" @click="postData">提交</div>
         </form>
@@ -47,20 +47,35 @@
                 test:test(8011)
             }
         },
+
+        watch:{
+            article(){
+                let vm = this;
+                this.ue = UE.getEditor('container');
+                this.ue.reset();
+                vm.$nextTick(function(){
+                        this.ue.ready(function(){
+                            vm.ue.setContent(vm.article.content);
+                        });
+                    })
+            }
+        },
         methods:{
             postData(){
                 let vm = this;
+                this.ue.destroy();
                 let data = $.extend(true,$(this.$el).serializeJSON(),{createTime:new Date(),});
-                if(this.operate=="create"){
-                    this.create(data,function(){
-                        vm.$emit("createSuccess");
-                    })
-                }
-                if(this.operate=="update"){
-                    this.create(data,function(){
-                        vm.$emit("updateSuccess");
-                    })
-                }
+                console.log(data);
+                //                if(this.operate=="create"){
+//                    this.create(data,function(){
+//                        vm.$emit("createSuccess");
+//                    })
+//                }
+//                if(this.operate=="update"){
+//                    this.create(data,function(){
+//                        vm.$emit("updateSuccess");
+//                    })
+//                }
             },
 
             create(data,hook){

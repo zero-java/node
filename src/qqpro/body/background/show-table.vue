@@ -1,6 +1,6 @@
 <template>
     <div>
-        <table class="ui basic table">
+        <table class="ui selectable basic table">
             <thead>
             <tr>
                 <th><div class="ui icon button" @click="create"><i class="plus icon"></i></div></th><th>编号</th><th>标题</th><th>发布人</th><th>内容</th><th>日期</th><th>浏览量</th>

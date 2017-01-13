@@ -7,11 +7,15 @@
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css">
     <script src="/javascripts/jquery/jquery-3.1.1.min.js"></script>
     <script src="/javascripts/jquery/jquery.serializejson.js"></script>
+    <script src="/javascripts/ueditor/ueditor.config.js"></script>
+    <script src="/javascripts/ueditor/ueditor.all.min.js"></script>
+    <script src="/javascripts/ueditor/lang/zh-cn/zh-cn.js"></script>
     <script src="/javascripts/mvvm/vue.js"></script>
     <script src="/javascripts/semantic/semantic.min.js"></script>
     <script src="/javascripts/then/then.js"></script>
     <script src="/javascripts/sevue/sevue.js"></script>
     <script src="/javascripts/swiper/js/swiper.js"></script>
+
     <!--<script src="/javascripts/Proxy.js"></script>-->
 
     <title>哈哈</title>
@@ -56,6 +60,7 @@
 </div>
 </body>
 <script>
+    window.UEDITOR_HOME_URL = 'http://localhost:8011/images/'
     new Vue({
         el:"#app",
         data:{
