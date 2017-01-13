@@ -3,7 +3,7 @@
         <table class="ui basic table">
             <thead>
             <tr>
-                <th><div class="ui icon button" @click="showCreateForm"><i class="plus icon"></i></div></th><th>编号</th><th>标题</th><th>发布人</th><th>内容</th><th>日期</th><th>浏览量</th>
+                <th><div class="ui icon button" @click="create"><i class="plus icon"></i></div></th><th>编号</th><th>标题</th><th>发布人</th><th>内容</th><th>日期</th><th>浏览量</th>
             </tr>
             </thead>
             <tbody>
@@ -11,7 +11,7 @@
             <tr v-if="articles" v-for="article in articles">
                 <td class="collapsing"><div class="ui icon buttons">
                     <div class="ui button" @click="deleteArticle(article.id)"><i class="trash icon"></i></div>
-                    <div class="ui button"><i class="edit icon"></i></div>
+                    <div class="ui button" @click="update(article)"><i class="edit icon"></i></div>
                 </div></td>
                 <td>{{article.id}}</td>
                 <td>{{article.title}}</td>
@@ -28,7 +28,7 @@
         <div class="ui article modal">
             <div class="header">创建文章</div>
             <div class="content">
-                <article-form :url="create" @createSuccess="created"></article-form>
+                <article-form :url="url" :operate="operate" :article="article" @updateSuccess="updated" @createSuccess="created"></article-form>
             </div>
         </div>
     </div>
@@ -44,8 +44,10 @@
             return{
                 isInit:false,
                 loading:false,
-                create:'/articles',
+                url:'/articles',
+                article:{},
                 articles:[],
+                operate:"create",
                 data:{
                     totalElements:0,
                     first:false,
@@ -99,13 +101,27 @@
             reload(){
                 this.getPage(this.data.number);
             },
-            update(){},
-            showCreateForm(){
+            update(article){
                 this.$nextTick(function(){
+                    this.operate = 'update';
+                    this.article=article;
+                    $(".ui.article.modal").modal("toggle");
+                });
+            },
+            create(){
+                this.$nextTick(function(){
+                    this.operate = 'create';
+                    this.article={};
                     $(".ui.article.modal").modal("toggle");
                 })
             },
             created(){
+                this.$nextTick(function(){
+                    $(".ui.article.modal").modal("toggle");
+                    this.reload();
+                });
+            },
+            updated(){
                 this.$nextTick(function(){
                     $(".ui.article.modal").modal("toggle");
                     this.reload();
