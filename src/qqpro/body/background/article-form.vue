@@ -52,7 +52,7 @@
             article(){
                 let vm = this;
                 this.ue = UE.getEditor('container');
-                this.ue.reset();
+                this.ue.setContent('');
                 vm.$nextTick(function(){
                         this.ue.ready(function(){
                             vm.ue.setContent(vm.article.content);
@@ -63,19 +63,18 @@
         methods:{
             postData(){
                 let vm = this;
-                this.ue.destroy();
-                let data = $.extend(true,$(this.$el).serializeJSON(),{createTime:new Date(),});
+                let data = $.extend(true,$(this.$el).serializeJSON(),{createTime:new Date(),content:this.ue.getContentHtml()});
                 console.log(data);
-                //                if(this.operate=="create"){
-//                    this.create(data,function(){
-//                        vm.$emit("createSuccess");
-//                    })
-//                }
-//                if(this.operate=="update"){
-//                    this.create(data,function(){
-//                        vm.$emit("updateSuccess");
-//                    })
-//                }
+                if(this.operate=="create"){
+                    this.create(data,function(){
+                        vm.$emit("createSuccess");
+                    })
+                }
+                if(this.operate=="update"){
+                    this.create(data,function(){
+                        vm.$emit("updateSuccess");
+                    })
+                }
             },
 
             create(data,hook){

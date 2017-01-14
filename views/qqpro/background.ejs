@@ -10,32 +10,17 @@
     <script src="/javascripts/ueditor/ueditor.config.js"></script>
     <script src="/javascripts/ueditor/ueditor.all.min.js"></script>
     <script src="/javascripts/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="/javascripts/ueditor/ueditor.parse.js"></script>
     <script src="/javascripts/mvvm/vue.js"></script>
     <script src="/javascripts/semantic/semantic.min.js"></script>
     <script src="/javascripts/then/then.js"></script>
     <script src="/javascripts/sevue/sevue.js"></script>
     <script src="/javascripts/swiper/js/swiper.js"></script>
-
     <!--<script src="/javascripts/Proxy.js"></script>-->
 
     <title>哈哈</title>
 </head>
 <style>
-
-
-
-
-    .fade-enter{
-        transform: translateX(100%)
-    }
-    .fade-enter-active,.fade-leave-active{
-        transition: transform .5s ease;
-
-    }
-    .fade-leave{
-    transform :translateX(-100%)
-    }
-
 
 </style>
 <body>
@@ -49,9 +34,7 @@
                 </div>
             </div>
             <div class="ten wide column">
-                <transition name="fade">
                 <component :is="current" >哈哈</component>
-                </transition>
                 <!--<background-table></background-table>-->
             </div>
         </div>
